@@ -1,0 +1,71 @@
+
+<title>Consultas</title>
+
+{% extends "layoutPerfil.html" %}
+{% block contenido %}
+
+<br>
+<br>
+<form class="d-flex form-floating mb-3 container-sm " id="margenBuscar">
+    <input class="form-control me-2" id="floatingInput" type="search" placeholder="Buscar vuelos" aria-label="Search">
+    <label for="floatingInput" id="labelBuscar">Buscar Vuelo</label>
+    <button class="btn btn-outline-primary" type="submit">Buscar</button>
+</form>
+
+<table class="table container-sm">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">#Vuelo</th>
+        <th scope="col">Avión</th>
+        <th scope="col">Piloto</th>
+        <th scope="col">Capacidad</th>
+        <th scope="col">Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Boeing 737</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Airbus A330</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+        <td>A Tiempo</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Airbus A340</td>
+        <td>Mark</td>
+        <td>@mdo</td>
+        <td>A Tiempo</td>
+      </tr>
+        <tr>
+        <th scope="row">4</th>
+        <td>Airbus A330</td>
+        <td>Peter</td>
+        <td>@mdo</td>
+        <td>Retrasado</td>
+      </tr>
+      <tr>
+        <th scope="row">5</th>
+        <td>Boeing 757-200</td>
+        <td>Alid</td>
+        <td>@mdo</td>
+        <td>Aterrizó</td>
+      </tr>
+      <tr>
+        <th scope="row">6</th>
+        <td>Airbus A340</td>
+        <td>Marcos</td>
+        <td>@mdo</td>
+        <td>Retrasado</td>
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock %}

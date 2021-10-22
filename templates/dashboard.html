@@ -1,0 +1,148 @@
+<title>Dashboard</title>
+<link rel="stylesheet" type="text/css" href="/static/CSS/estiloSuper.css">
+{% extends "layoutPerfil.html" %}
+{% block contenido %}
+
+    <div class="general">
+        <div class="Avuelos">
+            <h2>Arribos vuelos</h2>
+            <table>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Hora</th>
+                    <th>Origen</th>
+                    <th>Estado</th>
+                    <th>Puerta</th>
+                </tr>
+                <tr>
+                    <td>AV8509</td>
+                    <td>18:40</td>
+                    <td>BARRANQUILLA</td>
+                    <td>ATERRIZÓ</td>
+                    <td>5</td>
+
+                </tr>
+                <tr>
+                    <td>AV8509</td>
+                    <td>18:40</td>
+                    <td>BARRANQUILLA</td>
+                    <td>ATERRIZÓ</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>AV8509</td>
+                    <td>18:40</td>
+                    <td>BARRANQUILLA</td>
+                    <td>ATERRIZÓ</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>AV8509</td>
+                    <td>18:40</td>
+                    <td>BARRANQUILLA</td>
+                    <td>ATERRIZÓ</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>AV8509</td>
+                    <td>18:40</td>
+                    <td>BARRANQUILLA</td>
+                    <td>ATERRIZÓ</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>AV8509</td>
+                    <td>18:40</td>
+                    <td>BARRANQUILLA</td>
+                    <td>ATERRIZÓ</td>
+                    <td>5</td>
+                </tr>
+            </table>
+
+        </div>
+
+        <div class="Svuelos">
+            <h2>Salidas vuelos</h2>
+            <table>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Hora</th>
+                    <th>Origen</th>
+                    <th>Estado</th>
+                    <th>Puerta</th>
+                </tr>
+                <tr>
+                    <td>AV8159</td>
+                    <td>18:40
+                    <td>SANTA MARTA</td>
+                    <td>A TIEMPO</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>AV8159</td>
+                    <td>18:40
+                    <td>SANTA MARTA</td>
+                    <td>A TIEMPO</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>AV8159</td>
+                    <td>18:40
+                    <td>SANTA MARTA</td>
+                    <td>A TIEMPO</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>AV8159</td>
+                    <td>18:40
+                    <td>SANTA MARTA</td>
+                    <td>A TIEMPO</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>AV8509</td>
+                    <td>18:40</td>
+                    <td>BARRANQUILLA</td>
+                    <td>ATERRIZÓ</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>AV8159</td>
+                    <td>18:40
+                    <td>SANTA MARTA</td>
+                    <td>A TIEMPO</td>
+                    <td>1</td>
+                </tr>
+            </table>
+
+        </div>
+
+        
+
+       
+    </div><br>
+
+    <div style="text-align: center;">
+        <button class="button button1">Gestionar Comentario</button>
+        <button class="button button1">Asignar permisos</button>
+        <!-- <button class="button button1">Gestionar Pilotos</button> -->
+        <form action="" method="get" style="margin: auto;">
+            NUMERO DE USUARIOS EN EL SISTEMA
+            <input type="text">
+            NUMERO DE PILOTOS
+            <input type="text">
+            NUMERO DE PASAJEROS
+            <input type="text"><br><br>
+            NUMERO DE PILOTOS
+            <input type="text">
+            NUMERO DE PASAJEROS
+            <input type="text"><br>
+
+        </form>
+        <button class="button button1"><a href="/crearvuelo" style="text-decoration: none; color: aliceblue;">Crear Vuelos</a></button>
+        <button class="button button1"><a href="/editarvuelo" style="text-decoration: none; color: aliceblue;">Editar Vuelos</a></button>
+        <button class="button button1"><a href="/eliminarvuelo" style="text-decoration: none; color: aliceblue;">Eliminar Vuelos</a></button>
+    </div>
+
+{% endblock %}
+

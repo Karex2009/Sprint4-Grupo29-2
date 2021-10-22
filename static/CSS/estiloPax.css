@@ -1,0 +1,63 @@
+#formR{
+    border: 1px solid black;
+    padding:20px;
+    text-align: left;
+    width: 550px;
+    margin: auto;
+}
+.botonR{
+    background-color: rgba(0, 0, 255, 0.685);
+    color: white;
+}
+.sele{
+    border: 1px solid black;
+    padding:10px;
+    width: 500px;
+    margin: auto;
+}
+.box{
+    border: 1px solid black;
+    padding:10px;
+    width: 450px;
+    margin: auto;
+    text-align: left;
+}
+#letra{
+    word-spacing: 20px;
+}
+.enunciado{
+    word-spacing: 15px;
+    margin: auto;
+    text-align: left;
+    font-weight: bold;
+    position: relative;
+    left: 40px;
+}
+#buscar{
+    width: 350px;
+    height: 20px;
+}
+#codigo{
+    width: 350px;
+    height: 20px;
+}
+#hora{
+    width: 350px;
+    height: 20px;
+}
+#destino{
+    width: 350px;
+    height: 20px;
+}
+#puerta{
+    width: 350px;
+    height: 20px;
+}
+#piloto{
+    width: 350px;
+    height: 20px;
+}
+#avion{
+    width: 350px;
+    height: 20px;
+}

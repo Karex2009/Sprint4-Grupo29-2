@@ -1,0 +1,212 @@
+.general {
+    padding-top: 15px;
+    width: 100%;
+    height: 400px;
+}
+
+.Avuelos {
+    float: left;
+
+    height: auto;
+    width: 40%;
+    margin-left: 50px;
+    padding: 20px;
+    background-color: darkcyan;
+    align-content: center;
+    border-radius: 20px;
+}
+
+.Avuelos h2 {
+    margin: auto;
+    width: 50%;
+    font-size: 25px;
+    text-align: center;
+    background-color: aliceblue;
+}
+
+.Svuelos {
+    float: right;
+    height: auto;
+    width: 40%;
+    margin-right: 50px;
+    padding: 20px;
+    background-color: darkcyan;
+    align-content: center;
+    border-radius: 20px;
+}
+
+.Svuelos h2 {
+    margin: auto;
+    width: 50%;
+    font-size: 25px;
+    text-align: center;
+    background-color: aliceblue;
+}
+
+.button {
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 14px 2px;
+    cursor: pointer;
+}
+
+.button1 {
+    border-radius: 2px;
+}
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+/* * {
+    margin: 0%;
+    padding: 0%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+} */
+
+.header {
+    width: 100%;
+    height: 75px;
+    margin-bottom: 25px;
+    background-color: #1a237e;
+    /* position:absolute; */
+    top: 0%;
+    left: 0%;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.logo {
+    float: left;
+    line-height: 75px;
+}
+
+.logo h1 {
+    color: aliceblue;
+    /* font-weight: 10; */
+    font-size: 25px;
+}
+
+.menu {
+    float: right;
+    line-height: 75px;
+}
+
+.menu a {
+    padding: 10px;
+    color: white;
+}
+
+
+
+.form1 {
+    width: 80%;
+    height: auto;
+    padding: 16px;
+    border-radius: 10px;
+    margin: auto;
+    background-color: #80cbc4;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
+}
+
+.form1.input {
+    padding: 3px 10px;
+    border: 1px solid #f6f6f6;
+    border-radius: 3px;
+    margin: 8px 10px;
+    display: inline-block;
+}
+
+.buttonCrear {
+    text-align: center;
+    font-weight: bold;
+    transition-duration: 0.4s;
+    background-color: #1a237e;
+    /* Green */
+    border-radius: 5px;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+}
+
+.buttonCrear:hover {
+    background-color:#304ffe;
+    /* Green */
+    color: white;
+}
+
+
+
+.formCrear {
+    width: 80%;
+    height: auto;
+    padding: 16px;
+    border-radius: 10px;
+    margin: auto;
+    background-color: #429b9e;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
+}
+
+.formCrear.input {
+    border: 1px solid #f6f6f6;
+    border-radius: 3px;
+}
+
+.izquierda{
+    width: 30%;
+    float: left;
+}
+
+.derecha{
+    width: 70%;
+    float: right;
+}
+
+.buttonCrear {
+    text-align: center;
+    font-weight: bold;
+    transition-duration: 0.4s;
+    background-color: #1a189c;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+}
+
+.buttonCrear:hover {
+    background-color: #1027a8;
+    /* Green */
+    color: white;
+}

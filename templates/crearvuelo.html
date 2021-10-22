@@ -1,0 +1,59 @@
+<title>Crear Vuelo</title>
+<link rel="stylesheet" type="text/css" href="/static/CSS/estiloSuper.css">
+{% extends "layoutPerfil.html" %}
+{% block contenido %}
+
+<form action="" class="formCrear">
+
+    <div class="izquierda">
+
+        <label style="font-size:20px">Codigo:</label>
+        <input type="text" style="width: 200px;">
+        <p>Ingrese el codigo, para asignar a este vuelo.</p><br>
+
+        <label style="font-size:20px">Piloto:</label>
+        <select name="transporte" style="width: 200px;">
+            <option>juan</option>
+            <option>pedro</option>
+            <option>camilo</option>
+            <option>luis fernando</option>
+        </select>
+        <p>Seleccione el nombre del piloto para este vuelo.</p><br>
+
+        <label style="font-size:20px">Destino:</label>
+        <input type="text" style="width: 200px;">
+        <p>Ingrese el destino del vuelo.</p><br>
+
+    </div>
+
+    <div class="derecha">
+        <label style="font-size:20px">Avion:</label>
+        <select name="transporte" style="width: 200px;">
+            <option>A320</option>
+            <option>BJ450</option>
+            <option>KJ897</option>
+            <option>PKIY89</option>
+        </select>
+        <p>Seleccione el modelo del avion para el vuelo.</p><br>
+
+        <label style="font-size:20px">Puerta:</label>
+        <input type="text" style="width: 200px;">
+        <p>Ingrese el numero de la puerta para el abordaje. </p><br>
+
+        <label style="font-size:20px">Seleccionar fecha y hora:</label>
+        <input type="datetime-local" id="birthdaytime" name="birthdaytime">
+        <p>Selccione la hora y fecha del vuelo, Nota: no habra edición de esta fecha una vez creado el vuelo.</p>
+        <br>
+
+    </div>
+    <p>
+        <input type="checkbox" />
+        He revisado y ajustado los parametros
+        necesarrios para crear este vuelo, soy consciente de que una vez creado este vuelo,
+        no puedo cambiar la fecha del mismo.
+    </p><br><br>
+    <button class="buttonCrear" type="submit" value="Enviar">CREAR VUELO</button>
+
+</form>
+
+{% endblock %}

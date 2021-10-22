@@ -1,0 +1,55 @@
+<title>Eliminar Vuelo</title>
+<link rel="stylesheet" type="text/css" href="/static/CSS/estiloPax.css">
+{% extends "layoutPerfil.html" %}
+{% block contenido %}
+  <form id="formR">
+    <h2> Editar Vuelo </h2>
+    <hr>
+    <label for="buscar">Búsquedad  por código de vuelo</label>
+    <br><br>
+    <input type="text" id="buscar" name="buscar" wigth="100px">
+    <br><br>
+    <button type="submit" class="botonR" id="boton" name="boton">Buscar</button>
+    <br><br>
+    <hr>
+    <div class="sele">
+    <p class="enunciado">     CÓDIGO    HORA      DESTINO      ESTADO    PUERTA</p>
+    <br>
+    <div class="box">
+    <input type="checkbox" id="check" name="check"> 
+    <label id="letra" for="check">AV9509 18:40 BOGOTÁ RETRASADO 5</label>
+    </div>
+    <br>
+    </div>
+    <br>
+    <button type="submit" class="botonR" id="editar" name="editar">Editar</button>
+    <br>
+    <hr>
+    <label for="codigo">Código de vuelo</label>
+    <br>
+    <input type="text" id="codigo" name="codigo">
+    <br>
+    <label for="hora">Hora</label>
+    <br>
+    <input type="text" id="hora" name="hora">
+    <br>
+    <label for="destino">Destino</label>
+    <br>
+    <input type="text" id="destino" name="destino">
+    <br>
+    <label for="puerta">Puerta</label>
+    <br>
+    <input type="text" id="puerta" name="puerta">
+    <br>
+    <label for="piloto">Piloto</label>
+    <br>
+    <input type="text" id="piloto" name="piloto">
+    <br>
+    <label for="avion">Avión</label>
+    <br>
+    <input type="text" id="avion" name="avion">
+    <br><br>
+    <button type="submit" class="botonR" id="submit" name="submit">Submit</button>
+    <br>
+  </form>
+{% endblock %}

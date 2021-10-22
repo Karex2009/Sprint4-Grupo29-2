@@ -1,0 +1,73 @@
+<title>Ingresar</title>
+
+{% extends "layout.html" %}
+{% block contenido %}
+<div class="container">
+    <h3>Ingresar
+        <hr>
+    </h3>
+
+    <form action="{{ url_for('login')}}" method="post" name="formRegistro" onSubmit="validar_formulario();">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Correo</label><br>
+            <input type="email" class="form-control" placeholder="Correo" id="exampleInputEmail1" name="correo"
+                aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label><br>
+            <input type="password" class="form-control" placeholder="Contraseña" name="password"
+                id="exampleInputPassword1">
+            <!--<img src="{{ url_for('static', filename='images/view.png') }}" onmouseover="mostrarPassword();"
+                onmouseout="ocultarPassword();" />-->
+        </div>
+        <button type="submit" class="btn btn-primary" id="btnIngreso">Ingresar</button>
+        <form>
+            <div class="mb-3" id="reestablecer">
+                <br>
+                <a type="button" class=" link-warning" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    data-bs-whatever="@mdo">¿Olvidaste tu contraseña?</a>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Reestablecer contraseña</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="recipient-name" class="col-form-label">Ingresa tu correo</label>
+                                        <input type="email" class="form-control" id="recipient-name">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message-text" class="col-form-label">Nueva contraseña</label>
+                                        <input type="password" class="form-control" id="message-text"></input>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Reestablecer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </form>
+    <hr />
+
+    <form action="/registro">
+        <label for="exampleInputEmail1" class="form-label" style="margin-left:35%;">Crear Cuenta</label><br>
+        <button type="submit" class="btn btn-primary" id="btnRegistro">Registrarse</button>
+    </form>
+
+</div>
+<br>
+<br>
+<br>
+{% endblock %}

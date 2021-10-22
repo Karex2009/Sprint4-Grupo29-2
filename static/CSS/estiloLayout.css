@@ -1,0 +1,74 @@
+.btnIngresar{
+    border: none;
+}
+
+#btnIngresar{
+    text-decoration: none;
+    color: blanchedalmond;
+}
+
+#btnIngresar:hover{
+    text-decoration:underline;
+}
+
+#btnRegistrar{
+    text-decoration: none;
+    color: blanchedalmond;    
+    margin-right: 20%;
+}
+
+#btnRegistrar:hover{
+    text-decoration:underline;
+}
+
+footer{
+    text-align: center
+}
+
+.container{
+    max-width: 30%;
+    border-style:groove;
+    border-radius: 12px;
+    border-color: rgb(153, 125, 125);
+    padding: 3%;
+}
+
+#reestablecer{
+    text-align: center;
+    font-size: small;
+    
+}
+
+#btnIngreso{
+    margin-left: 37%;
+}
+
+#btnRegistro{
+    margin-left: 34%;
+}
+
+#margenBuscar{
+    max-width: 50%;
+    
+}
+
+#labelBuscar{
+    margin-left: 2%;
+}
+
+nav li:hover>ul {
+    border-radius: 10px;
+  display: block;
+  position: absolute;
+
+  }
+
+#desplegable:hover{    
+    background-color:rgba(73, 75, 78, 0.247);
+}
+
+.d-flex{
+    margin-bottom: auto
+}
+
+

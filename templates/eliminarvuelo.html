@@ -1,0 +1,29 @@
+
+  <title>Eliminar Vuelo</title>
+  <link rel="stylesheet" type="text/css" href="/static/CSS/estiloPax.css">
+{% extends "layoutPerfil.html" %}
+{% block contenido %}
+  <form id="formR">
+    <h2> Eliminar Vuelo </h2>
+    <hr>
+    <label for="buscar">Búsquedad  por código de vuelo</label>
+    <br><br>
+    <input type="text" id="buscar" name="buscar" wigth="100px">
+    <br><br>
+    <button type="submit" id="boton" class="botonR" name="boton">Buscar</button>
+    <br><br>
+    <hr>
+    <div class="sele">
+    <p class="enunciado">     CÓDIGO    HORA      DESTINO      ESTADO    PUERTA</p>
+    <br>
+    <div class="box">
+    <input type="checkbox" id="check" name="check"> 
+    <label id="letra" for="check">AV9509 18:40 BOGOTÁ RETRASADO 5</label>
+    </div>
+    <br>
+    </div>
+    <br>
+    <button type="submit" id="boton" class="botonR" name="boton">Eliminar</button>
+  </form>
+{% endblock %}
+    

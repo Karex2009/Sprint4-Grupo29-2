@@ -1,0 +1,51 @@
+<title>Registrarse</title>
+{% extends "layout.html" %}
+{% block contenido %}
+    <div class="container">
+        <h3>Crear Cuenta</h3>
+        <hr>
+        <form action="/registro"  method="POST" name="formRegistro" id="formRegistro" onSubmit="validar_formulario();">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Nombre</label><br>
+                <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Apellido</label><br>
+                <input type="text" class="form-control" id="apellido" name="apellido" aria-describedby="">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Identificación</label><br>
+                <input type="number" class="form-control" id="identificacion" name="identificacion" aria-describedby="">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Correo</label><br>
+                <input type="email" class="form-control" id="exampleInputEmail1" name="correo"
+                    aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Contraseña</label><br>
+                <input type="password" class="form-control" name="password1" id="exampleInputPassword1">
+            </div>
+            <!-- <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Confirmar Contraseña</label><br>
+                <input type="password" class="form-control" name="password2" id="exampleInputPassword1">
+            </div> -->
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">He leído y acepto la
+                    <a href="#" class="link-warning">Politica de Privacidad</a></label>
+            </div>
+            <section class="content">
+                {% for message in get_flashed_messages() %}
+                <div class="flash">{{ message }}</div>
+                {% endfor %}
+            </section>
+
+            <button type="submit" class="btn btn-primary">Registrarse</button>
+        </form>
+
+    </div>
+    <br>
+    <br>
+    <br>
+{% endblock %}

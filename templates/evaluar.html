@@ -1,0 +1,148 @@
+<title>AeropuertoLosGarzones - EvaluacionVuelo</title>
+
+{% extends "layoutPerfil.html" %}
+{% block contenido %}
+<div>
+    <br />
+    <h2> ¡BIENVENIDO AL AREA DE EVALUACIÓN DEL VUELO QUE ACABA DE DISFRUTAR!</h1>
+        <p>¿Como estuvo su vuelo? Esperamos que haya sido una gran experiencia para usted y sus acompañantes.
+            <br />
+            <br />
+            En el Aeropuerto LOS GARZONES estamos comprometidos por la mejora continua de nuestro servicio.
+            <br />
+            <br />
+            Con el fin de mejorar nuestro desempeño, lo invitamos a diligenciar esta pequeña encuesta, donde podrá
+            calificar diversos
+            aspectos del servicio recibido.
+            <br />
+            <br />
+            Esto solo le tomara un par de minutos de su tiempo, pero a nosotros nos permitirá identificar donde debemos
+            mejorar.
+            <br />
+        </p>
+        <h4>¡¡De antemano Muchas Gracias por su tiempo!!</h4>
+        <hr>
+        <h3>En este espacio puedes calificar el vuelo que acabas de realizar:</h3>
+        <form action="/formularioencuesta" method="POST">
+            <p>Al frente de cada aspecto del servicio, califique del 0 al 5, entendiendo por (0) la peor experiencia de
+                servicio recibida y por (5) la mejor experiencia.</p>
+            <h4>Su experiencia dentro de nuestras instalaciones fue:</h6>
+                1_Seguridad al interior de nuestras instalaciones...
+                <label>0 <input type="radio" id="Seguridad" name="seguridad" value="0" /></label>
+                <label>1 <input type="radio" id="Seguridad" name="seguridad" value="1" /></label>
+                <label>2 <input type="radio" id="Seguridad" name="seguridad" value="2" /></label>
+                <label>3 <input type="radio" id="Seguridad" name="seguridad" value="3" /></label>
+                <label>4 <input type="radio" id="Seguridad" name="seguridad" value="4" /></label>
+                <label>5 <input type="radio" id="Seguridad" name="seguridad" value="5" /></label>
+
+                <br />
+                <br />
+                2_Amabilidad de nuestro personal en tierra ..........
+                <label>0 <input type="radio" id="Amabilidad2" name="amabilidad2" value="0" /></label>
+                <label>1 <input type="radio" id="Amabilidad2" name="amabilidad2" value="1" /></label>
+                <label>2 <input type="radio" id="Amabilidad2" name="amabilidad2" value="2" /></label>
+                <label>3 <input type="radio" id="Amabilidad2" name="amabilidad2" value="3" /></label>
+                <label>4 <input type="radio" id="Amabilidad2" name="amabilidad2" value="4" /></label>
+                <label>5 <input type="radio" id="Amabilidad2" name="amabilidad2" value="5" /></label>
+
+                <br />
+                <br />
+                3_Comodidad de nuestras instalaciones en tierra...
+                <label>0 <input type="radio" id="Comodidad2" name="comodidad2" value="0" /></label>
+                <label>1 <input type="radio" id="Comodidad2" name="comodidad2" value="1" /></label>
+                <label>2 <input type="radio" id="Comodidad2" name="comodidad2" value="2" /></label>
+                <label>3 <input type="radio" id="Comodidad2" name="comodidad2" value="3" /></label>
+                <label>4 <input type="radio" id="Comodidad2" name="comodidad2" value="4" /></label>
+                <label>5 <input type="radio" id="Comodidad2" name="comodidad2" value="5" /></label>
+                <br />
+                <br />
+                4_Higiene de nuestros baños en tierra....................
+                <label>0 <input type="radio" id="Banos" name="banos" value="0" /></label>
+                <label>1 <input type="radio" id="Banos" name="banos" value="1" /></label>
+                <label>2 <input type="radio" id="Banos" name="banos" value="2" /></label>
+                <label>3 <input type="radio" id="Banos" name="banos" value="3" /></label>
+                <label>4 <input type="radio" id="Banos" name="banos" value="4" /></label>
+                <label>5 <input type="radio" id="Banos" name="banos" value="5" /></label>
+                <br />
+                <br />
+                5_Se abordó el avión a la hora estipulada...............
+                <label>0 <input type="radio" id="PuntualidadAbordar" name="puntualidadAbordar" value="0" /></label>
+                <label>1 <input type="radio" id="PuntualidadAbordar" name="puntualidadAbordar" value="1" /></label>
+                <label>2 <input type="radio" id="PuntualidadAbordar" name="puntualidadAbordar" value="2" /></label>
+                <label>3 <input type="radio" id="PuntualidadAbordar" name="puntualidadAbordar" value="3" /></label>
+                <label>4 <input type="radio" id="PuntualidadAbordar" name="puntualidadAbordar" value="4" /></label>
+                <label>5 <input type="radio" id="PuntualidadAbordar" name="puntualidadAbordar" value="5" /></label>
+                <br />
+                <br />
+                6_El avión despegó a la hora establecida...............
+                <label>0 <input type="radio" id="PuntualidadDespegue" name="puntualidadDespegue" value="0" /></label>
+                <label>1 <input type="radio" id="PuntualidadDespegue" name="puntualidadDespegue" value="1" /></label>
+                <label>2 <input type="radio" id="PuntualidadDespegue" name="puntualidadDespegue" value="2" /></label>
+                <label>3 <input type="radio" id="PuntualidadDespegue" name="puntualidadDespegue" value="3" /></label>
+                <label>4 <input type="radio" id="PuntualidadDespegue" name="puntualidadDespegue" value="4" /></label>
+                <label>5 <input type="radio" id="PuntualidadDespegue" name="puntualidadDespegue" value="5" /></label>
+                <br />
+                <br />
+                <hr>
+                <h4>Su experiencia durante el vuelo fue:</h6>
+                    7_Atención a bordo del avión................................
+                    <label>0 <input type="radio" id="Atencion" name="atencion" value="0" /></label>
+                    <label>1 <input type="radio" id="Atencion" name="atencion" value="1" /></label>
+                    <label>2 <input type="radio" id="Atencion" name="atencion" value="2" /></label>
+                    <label>3 <input type="radio" id="Atencion" name="atencion" value="3" /></label>
+                    <label>4 <input type="radio" id="Atencion" name="atencion" value="4" /></label>
+                    <label>5 <input type="radio" id="Atencion" name="atencion" value="5" /></label>
+                    <br />
+                    <br />
+                    8_Amabilidad de nuestro personal a bordo............
+                    <label>0 <input type="radio" id="Amabilidad1" name="amabilidad1" value="0" /></label>
+                    <label>1 <input type="radio" id="Amabilidad1" name="amabilidad1" value="1" /></label>
+                    <label>2 <input type="radio" id="Amabilidad1" name="amabilidad1" value="2" /></label>
+                    <label>3 <input type="radio" id="Amabilidad1" name="amabilidad1" value="3" /></label>
+                    <label>4 <input type="radio" id="Amabilidad1" name="amabilidad1" value="4" /></label>
+                    <label>5 <input type="radio" id="Amabilidad1" name="amabilidad1" value="5" /></label>
+                    <br />
+                    <br />
+                    9_Refrigerio a bordo del avión...............................
+                    <label>0 <input type="radio" id="Refrigerio" name="refrigerio" value="0" /></label>
+                    <label>1 <input type="radio" id="Refrigerio" name="refrigerio" value="1" /></label>
+                    <label>2 <input type="radio" id="Refrigerio" name="refrigerio" value="2" /></label>
+                    <label>3 <input type="radio" id="Refrigerio" name="refrigerio" value="3" /></label>
+                    <label>4 <input type="radio" id="Refrigerio" name="refrigerio" value="4" /></label>
+                    <label>5 <input type="radio" id="Refrigerio" name="refrigerio" value="5" /></label>
+                    <br />
+                    <br>
+                    10_La Duración del vuelo fue la indicada..............
+                    <label>0 <input type="radio" id="Duracion" name="duracion" value="0" /></label>
+                    <label>1 <input type="radio" id="Duracion" name="duracion" value="1" /></label>
+                    <label>2 <input type="radio" id="Duracion" name="duracion" value="2" /></label>
+                    <label>3 <input type="radio" id="Duracion" name="duracion" value="3" /></label>
+                    <label>4 <input type="radio" id="Duracion" name="duracion" value="4" /></label>
+                    <label>5 <input type="radio" id="Duracion" name="duracion" value="5" /></label>
+                    <br />
+                    <br />
+                    <hr>
+                    <h4> Por favor compartanos sus amables comentarios acerca de su experiencia, usando nuestros
+                        servicios :</h4>
+                    <label for="comentario"> Comentario</label>
+                    <br />
+                    <textarea cols="100" rows="10" maxlength="1000" id="comentario"
+                        placeholder="Inserte sus comentarios en este campo (Max 1000 caracteres)"
+                        name="comentario"></textarea>
+                    <!-- no olvidar colocar el botón para devolverse al espacio del usuario-->
+                    <br />
+                    <button type="button"><a href="/consultas" style="text-decoration: none; color: black;">Cancelar</a> </button> 
+                    <!-- recuerda usar javascript para las direccion a la pagina de usuario-->
+                    <button type="submit"> Enviar Encuesta y Comentarios</button>
+                    <button type="reset"> Limpiar formularios</button>
+
+                    <br />
+                    <br />
+
+
+
+        </form>
+    
+
+</div>
+{% endblock %}

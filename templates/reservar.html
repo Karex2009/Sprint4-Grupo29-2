@@ -1,0 +1,80 @@
+<title>Reservar</title>
+<link rel="stylesheet" type="text/css" href="/static/CSS/estiloPax.css">
+{% extends "layoutPerfil.html" %}
+{% block contenido %}
+
+    <form class="container-sm">
+        <h2>DATOS DEL PASAJERO</h2>
+        <p>En este espacio usted podrá reservar su vuelo, para ello deberá diligenciar el siguiente formulario: </p>
+        <hr>
+        <h4>DATOS PERSONALES / PERSONAL INFORMATION :</h6>
+        <p>Introduzca sus datos personales en los siguientes campos </p>
+        <label>Nacionalidad/Nationality : <input type="" id="Nacionalidad" name="nacionalidad" placeholder="Nacionalidad/Nationality"/></label>
+        <br/>
+        <br/>
+        Numero de Identidad / ID Number :
+        <label>ID    <input type=" " id="ID" name="ID" placeholder="# Identificación/ID number"></label>
+        <br/>
+        <br/>
+        Genero/Genre :<label> Masculino (Male) <input type="radio" id="Genero" name="genero" value="masculino"/></label>
+        <label>  Femenino (Female) <input type="radio" id="Genero" name="genero" value="femenino"/></label>
+        <br/>
+        <br/>
+        Indique si es un Adulto o un Niño :
+        <label>Niño/Child <input type="radio" id="Tipo" name="tipo"value="niño"/></label>
+        <label>Adulto/Adult <input type="radio" id="Tipo" name="tipo" value="adulto"/></label>
+        <br/>
+        <br/>
+        Introduzca su
+        <label>Edad <input type="number" min="0" max="130" step="1" id="Edad" name="edad" placeholder="Edad/Age"/></label>
+        <br/>
+        <br/>
+        <label>Primer Nombre: <input type="" id="Nombre1" name="nombre1" placeholder="1er Nombre/1st Name"/></label>
+        <label>Segundo Nombre: <input type="" id="Nombre2" name="nombre2" placeholder="2do Nombre/2nd Name"/></label>
+        <br/>
+        <br/>
+        <label>Primer Apellido: <input type="" id="Apellido1" name="apellido1" placeholder="1er Apellido/Last Name"/></label>
+        <label>Segundo Apellido: <input type="" id="Apellido2" name="apellido2" placeholder="2do Apellido/"/></label>
+        <br/>
+        <br/>
+        <label>Correo Electrónico: <input type="email" id="email" name="email" placeholder="CorreoElectrónico/Email"/></label>
+        <br>
+        <br/>
+
+        <hr>
+        <h4>INFORMACION SOBRE EL VUELO A RESERVAR / INFORMATION ABOUT THE FLIGHT TO BE BOOKED:</h4>
+        <br/>
+        <label>Ciudad de Destino / Destination City : <input type="" id="Destino" name="destino" placeholder="Destino/Destination"/></label>
+        <br/>
+        <br/>
+        Introduzca la fecha del vuelo / Enter the date of your flight  :
+        <br/>
+        <br/>
+        <label>Dia del Vuelo / Flight Day : <input type="Date" id="Fecha" name="fecha"/></label>
+        <br/>
+        <br/>
+        <label>Hora del Vuelo / Flight Hour : <input type="time" id="Hora" name="hora"/></label>
+        <br/>
+        <br/>        
+        <!-- Introduzca el lugar donde se desea sentar en el avión /:
+        <br/>
+        <br/>
+        <label>Pasillo / Hall : <input type="radio" id="Lugar" name="lugar" value="Pasillo"/></label>
+        <label>Ventana / Window : <input type="radio" id="Lugar" name="lugar" value="Ventana"/></label>
+        <br>
+        <br/>
+        <label>Lado Derecha / Right Side : <input type="radio" id="Lado" name="lado" value="Derecha"/></label>
+        <label>Lado Izquierda / Left Side : <input type="radio" id="Lado" name="lado" value="Izquierda"/></label>
+        <br>
+        <br/>
+        <label>Fila / Row : <input type="number" min="1" max="30" step="1" id="Fila" name="fila" placeholder="Fila/Row"/></label>
+        <br>
+        <br/> -->
+        <button type="button"><a href="/consultas" style="text-decoration: none; color: black;">Cancelar / Cancel</a> </button>  <!-- recuerda usar javascript para las direccion a la pagina de usuario-->
+        <button type="submit"> Enviar / Send</button>
+        <button type="reset"> Limpiar / Reset</button>
+
+
+        <hr>
+    </form>
+{% endblock %}
