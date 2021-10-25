@@ -1,0 +1,40 @@
+<title>Ingresar</title>
+
+{% extends "layout.html" %}
+{% block contenido %}
+<div class="container" style="margin-bottom: 10%; margin-top: 3%;">
+    <form action="/permisos" method="post">
+        <div class="input-group mb-3 ">
+            <input type="text" class="form-control" placeholder="Buscar usuario" aria-label="Recipient's username"
+            aria-describedby="button-addon2" name="user">
+            <input class="btn btn-outline-secondary" type="submit" value="Buscar" id="button-addon2">
+        </div>
+        <hr>
+        <div class="input-group flex-nowrap ">
+            <span class="input-group-text" id="addon-wrapping">@</span>
+            
+            <input type="text" class="form-control" {% if usuarios %} placeholder="{{usuarios[0]}}  {{usuarios[1]}}"{% endif %}  aria-label="Username"
+            aria-describedby="addon-wrapping" disabled>
+            
+            
+        </div>
+    </form>
+    <section class="content">
+        {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+      </section>
+    <form action="/permisos/act_rol" method="post">
+        <br>
+        <select class="form-select" aria-label="Default select example" name="seleccion">
+            <option selected>Tipo de permiso</option>
+            <option value="1">Permisos Pasajero</option>
+            <option value="2">Permisos Piloto</option>
+            <option value="3">Permisos SuperAdministrador</option>
+        </select>
+
+        <input class="btn btn-outline-success" type="submit" value="Asignar" style="margin-left: 20%; margin-top: 8%;">
+        <input class="btn btn-outline-warning" type="reset" value="Limpiar" style="margin-left: 5%; margin-top: 8%;">
+    </form>
+</div>
+{% endblock %}
