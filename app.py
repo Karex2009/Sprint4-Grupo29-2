@@ -304,11 +304,42 @@ def editarvuelos():
         return render_template('consultas.html')   
 
 
-@app.route('/evaluar')
+@app.route('/evaluar', methods=('GET','POST'))
 @login_required
 def evaluar():
     if g.user[5]==1:
-        return render_template('evaluar.html')
+        try:
+            
+            if request.method == 'POST':
+                
+                seguridad = request.form['seguridad']
+                amabilidad2 = request.form['amabilidad2']
+                comodidad2=request.form['comodidad2']
+                banos=request.form['banos']
+                puntualidadAbordar=request.form['puntualidadAbordar']
+                puntualidadDespegue=request.form['puntualidadDespegue']
+                atencion=request.form['atencion']
+                amabilidad1=request.form['amabilidad1']
+                refrigerio=request.form['refrigerio']
+                duracion=request.form['duracion']
+                comentario=request.form['comentario']
+                error = None
+                print('se ingreso al metodo de evaluacion')
+                db = get_db()
+                if error is not None:
+                    return render_template("evaluar.html")
+                else:
+                    print ('ENTRE AL METODO INSERTAR')
+                    db.execute(
+                        'INSERT INTO evaluacion (seguridad, amabilidad2,comodidad2,banos, puntualidadAbordar, puntualidadDespegue,atencion,amabilidad1,refrigerio,duracion,comentario) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
+                        (seguridad, amabilidad2,comodidad2,banos, puntualidadAbordar, puntualidadDespegue,atencion,amabilidad1,refrigerio,duracion, comentario)
+                    )
+                    db.commit()
+                    return render_template('consultas.html')
+            return render_template('evaluar.html')
+            
+        except:
+            return render_template('evaluar.html')
     else:
         return render_template('consultas.html')
     
