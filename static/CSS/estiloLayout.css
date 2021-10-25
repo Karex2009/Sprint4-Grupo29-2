@@ -63,9 +63,9 @@ nav li:hover>ul {
 
   }
 
-#desplegable:hover{    
+/* #desplegable:hover{    
     background-color:rgba(73, 75, 78, 0.247);
-}
+} */
 
 .d-flex{
     margin-bottom: auto

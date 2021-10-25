@@ -1,46 +1,42 @@
 <title>Reservar</title>
 <link rel="stylesheet" type="text/css" href="/static/CSS/estiloPax.css">
-{% extends "layoutPerfil.html" %}
+{% extends "layout.html" %}
 {% block contenido %}
 
-    <form class="container-sm">
+    <form action="/reservar" method="post" class="container-sm">
         <h2>DATOS DEL PASAJERO</h2>
         <p>En este espacio usted podrá reservar su vuelo, para ello deberá diligenciar el siguiente formulario: </p>
         <hr>
         <h4>DATOS PERSONALES / PERSONAL INFORMATION :</h6>
         <p>Introduzca sus datos personales en los siguientes campos </p>
-        <label>Nacionalidad/Nationality : <input type="" id="Nacionalidad" name="nacionalidad" placeholder="Nacionalidad/Nationality"/></label>
+        <!-- <label>Nacionalidad/Nationality : <input type="" id="Nacionalidad" name="nacionalidad" placeholder="Nacionalidad/Nationality"/></label>
+        <br/>
+        <br/> -->
+        
+        <label> Numero de Identidad / ID Number :id    <input type=" " id="identificacion" name="identificacion" placeholder="# Identificación/ID number"></label>
         <br/>
         <br/>
-        Numero de Identidad / ID Number :
-        <label>ID    <input type=" " id="ID" name="ID" placeholder="# Identificación/ID number"></label>
-        <br/>
-        <br/>
-        Genero/Genre :<label> Masculino (Male) <input type="radio" id="Genero" name="genero" value="masculino"/></label>
+        <!-- Genero/Genre :<label> Masculino (Male) <input type="radio" id="Genero" name="genero" value="masculino"/></label>
         <label>  Femenino (Female) <input type="radio" id="Genero" name="genero" value="femenino"/></label>
         <br/>
         <br/>
-        Indique si es un Adulto o un Niño :
+        Indique si es un Niño o un Adulto  :
         <label>Niño/Child <input type="radio" id="Tipo" name="tipo"value="niño"/></label>
         <label>Adulto/Adult <input type="radio" id="Tipo" name="tipo" value="adulto"/></label>
         <br/>
         <br/>
-        Introduzca su
-        <label>Edad <input type="number" min="0" max="130" step="1" id="Edad" name="edad" placeholder="Edad/Age"/></label>
+        <label> Introduzca su Edad : <input type="number" min="0" max="130" step="1" id="Edad" name="edad" placeholder="Edad/Age"/></label>
+        <br/>
+        <br/> -->
+        <label>Nombre: <input type="" id="Nombre" name="nombre" placeholder="1er Nombre/1st Name"/></label>
         <br/>
         <br/>
-        <label>Primer Nombre: <input type="" id="Nombre1" name="nombre1" placeholder="1er Nombre/1st Name"/></label>
-        <label>Segundo Nombre: <input type="" id="Nombre2" name="nombre2" placeholder="2do Nombre/2nd Name"/></label>
+        <label>Apellido: <input type="" id="Apellido" name="apellido" placeholder="1er Apellido/Last Name"/></label>
         <br/>
         <br/>
-        <label>Primer Apellido: <input type="" id="Apellido1" name="apellido1" placeholder="1er Apellido/Last Name"/></label>
-        <label>Segundo Apellido: <input type="" id="Apellido2" name="apellido2" placeholder="2do Apellido/"/></label>
-        <br/>
-        <br/>
-        <label>Correo Electrónico: <input type="email" id="email" name="email" placeholder="CorreoElectrónico/Email"/></label>
+        <label>Correo Electrónico: <input type="email" id="correo" name="correo" placeholder="CorreoElectrónico/Email"/></label>
         <br>
         <br/>
-
         <hr>
         <h4>INFORMACION SOBRE EL VUELO A RESERVAR / INFORMATION ABOUT THE FLIGHT TO BE BOOKED:</h4>
         <br/>
@@ -71,7 +67,7 @@
         <br>
         <br/> -->
         <button type="button"><a href="/consultas" style="text-decoration: none; color: black;">Cancelar / Cancel</a> </button>  <!-- recuerda usar javascript para las direccion a la pagina de usuario-->
-        <button type="submit"> Enviar / Send</button>
+        <input type="submit" value= 'Enviar'> 
         <button type="reset"> Limpiar / Reset</button>
 
 
