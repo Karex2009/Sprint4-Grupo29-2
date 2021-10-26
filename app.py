@@ -116,17 +116,90 @@ def logout():
     session.clear()
     return redirect(url_for( 'login' ))
 
-@app.route('/consultas')
+@app.route('/consultas', methods=('GET', 'POST'))
 # @login_required
 def consultas():
-    return render_template('consultas.html')
+    try:
+        if request.method == 'POST':
+            print("entre por post")
+            db = get_db()
+            # BUSCAR LA INFORMACION EN BASE DE DATOS CON ESA CARAR
+            busqueda = request.form['busqueda']
+            
+            cantidad = db.execute(
+                'SELECT COUNT(*) FROM vuelos where codigo =' + "'"+busqueda + "'" 
+            ).fetchone()
+            print(cantidad)
+
+            result = db.execute(
+                'SELECT * FROM vuelos where codigo ='+ "'"+busqueda + "'"
+            ).fetchall()
+            print(result)
+
+            return render_template('consultas.html', datos=result, cantidad=cantidad)
+        else:
+            print("entre por get")
+            db = get_db()
+            todos = []
+
+            cantidad = db.execute(
+                'SELECT COUNT(*) FROM vuelos'
+            ).fetchone()
+
+            codigo = db.execute(
+                'select codigo from vuelos'
+            ).fetchall()
+            todos.append(codigo)
+
+            avion = db.execute(
+                'SELECT avion FROM vuelos'
+            ).fetchall()
+            todos.append(avion)
+
+            pilotos = db.execute(
+                'SELECT piloto FROM vuelos'
+            ).fetchall()
+            todos.append(pilotos)
+
+            destino = db.execute(
+                'SELECT destino FROM vuelos'
+            ).fetchall()
+            todos.append(destino)
+            print(todos)
+
+            return render_template('consultas.html', datos=todos, cantidad=cantidad)
+    except:
+       return render_template('consultas.html')
 
 
 @app.route('/dashboard')
 @login_required
 def dashboard():
     if g.user[5]==3:
-        return render_template('dashboard.html')
+        db = get_db()
+        todos = []
+
+        codigo = db.execute(
+            'select * from vuelos'
+        ).fetchall()
+        todos.append(codigo)
+
+        usuario = db.execute(
+            'SELECT COUNT(tipo_usuario) FROM personas'
+        ).fetchone()
+        todos.append(usuario)
+
+        toPilotos = db.execute(
+            'SELECT COUNT(tipo_usuario) FROM personas where tipo_usuario=2'
+        ).fetchone()
+        todos.append(toPilotos)
+
+        toPasajeros = db.execute(
+            'SELECT COUNT(tipo_usuario) FROM personas where tipo_usuario=1'
+        ).fetchone()
+        todos.append(toPasajeros)
+
+        return render_template('dashboard.html', datos=todos)
     else:
         return render_template('consultas.html')
 
@@ -166,11 +239,47 @@ def reservar():
     
 
 
-@app.route('/crearvuelo')
+@app.route('/crearvuelo', methods=('GET', 'POST'))
 @login_required
 def crearvuelo():
     if g.user[5]==3:
-        return render_template('crearvuelo.html')
+        datos = []
+        try:
+            db = get_db()
+            pilotos = db.execute(
+                'SELECT nombre FROM personas WHERE tipo_usuario = 2'
+            ).fetchall()
+            datos.append(pilotos)
+            ciudades = db.execute(
+                'select * from ciudades'
+            ).fetchall()
+            datos.append(ciudades)
+            aviones = db.execute(
+                'select matricula from aviones'
+            ).fetchall()
+            datos.append(aviones)
+
+            if request.method == 'POST':
+                print("entre por aqui")
+                codigo = request.form['codigo']
+                piloto = request.form['piloto']
+                destino = request.form['destino']
+                avion = request.form['avion']
+                puerta = request.form['puerta']
+                fecha = request.form['fecha']
+                hora = request.form['hora']
+
+                db = get_db()
+                db.execute(
+                    'INSERT INTO vuelos (codigo, piloto, destino, avion, puerta, fecha, hora) VALUES (?,?,?,?,?,?,?)',
+                    (codigo, piloto, destino, avion, puerta, fecha, hora)
+                )
+                db.commit()
+                return render_template('crearvuelo.html', listas=datos)
+            else:
+                return render_template('crearvuelo.html', listas=datos)
+        except:
+            return render_template('crearvuelo.html')
     else:
         return render_template('consultas.html')
     

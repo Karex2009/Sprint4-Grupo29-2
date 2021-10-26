@@ -3,45 +3,58 @@
 {% extends "layout.html" %}
 {% block contenido %}
 
-<form action="" class="formCrear">
+<form action="/crearvuelo" class="formCrear" method="POST">
 
     <div class="izquierda">
 
         <label style="font-size:20px">Codigo:</label>
-        <input type="text" style="width: 200px;">
+        <input type="text" style="width: 200px;"name="codigo">
         <p>Ingrese el codigo, para asignar a este vuelo.</p><br>
 
         <label style="font-size:20px">Piloto:</label>
-        <select name="transporte" style="width: 200px;">
-            <option>juan</option>
-            <option>pedro</option>
-            <option>camilo</option>
-            <option>luis fernando</option>
+        <select name="piloto" style="width: 200px;">
+            {% for pi in listas[0] %}
+            {% for i in pi %}
+            <option>{% print(i) %}</option>
+            {% endfor %}
+            {% endfor %}
         </select>
         <p>Seleccione el nombre del piloto para este vuelo.</p><br>
 
         <label style="font-size:20px">Destino:</label>
-        <input type="text" style="width: 200px;">
-        <p>Ingrese el destino del vuelo.</p><br>
+        <select name="destino" style="width: 200px;">
+            {% for pi in listas[1] %}
+            {% for i in pi %}
+            <option>{% print(i) %}</option>
+            {% endfor %}
+            {% endfor %}
+        </select>
+        <p>Seleccione el destino del vuelo.</p><br>
 
     </div>
 
     <div class="derecha">
         <label style="font-size:20px">Avion:</label>
-        <select name="transporte" style="width: 200px;">
-            <option>A320</option>
-            <option>BJ450</option>
-            <option>KJ897</option>
-            <option>PKIY89</option>
+        <select name="avion" style="width: 200px;">
+            {% for pi in listas[2] %}
+            {% for i in pi %}
+            <option>{% print(i) %}</option>
+            {% endfor %}
+            {% endfor %}
         </select>
         <p>Seleccione el modelo del avion para el vuelo.</p><br>
 
         <label style="font-size:20px">Puerta:</label>
-        <input type="text" style="width: 200px;">
+        <select  style="width: 200px;" name="puerta">
+            <option value="1">puerta 1</option>
+            <option value="2">puerta 2</option>
+            <option value="3">puerta 3</option>
+            <option value="4">puerta 4</option>
+        </select>
         <p>Ingrese el numero de la puerta para el abordaje. </p><br>
 
         <label style="font-size:20px">Seleccionar fecha y hora:</label>
-        <input type="datetime-local" id="birthdaytime" name="birthdaytime">
+        <input type="date" name="fecha">  <input type="time" name="hora" required> 
         <p>Selccione la hora y fecha del vuelo, Nota: no habra edición de esta fecha una vez creado el vuelo.</p>
         <br>
 
