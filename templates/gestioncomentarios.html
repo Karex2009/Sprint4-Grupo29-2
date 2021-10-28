@@ -1,0 +1,49 @@
+<title>gestioncomentarios</title>
+<link rel="stylesheet" type="text/css" href="/static/CSS/estiloPax.css">
+{% extends "layout.html" %}
+{% block contenido %}
+<form action= "/gestioncomentarios" method="post" id="formR">
+  <h2> Gestion de Evaluacion y Comentarios de los Vuelos </h2>
+  <hr>
+  <label for="buscar">Búsqueda  por código de vuelo</label>
+  <br><br>Introduzca el codigo del vuelo a gestionar sus comentarios :
+  <input type="text" id="buscar" name="buscar" wigth="50px">
+  <br><br>
+  <button type="submit" id="boton" class="botonR" name="buscar">Buscar</button>
+  <br>
+  <hr>
+
+  <div class="sele">
+    <p class="enunciado"> DATOS DEL VUELO A GESTIONAR EVALUACION Y COMENTARIOS </p>
+    <p class="enunciado">CÓDIGO   FECHA    HORA    DESTINO    AVION   PILOTO   PUERTA</p>
+    <br>
+
+    <div class="box">
+    {% if resultados%}   
+  <label id="letra" >   {{resultados[0]}} {{resultados[1]}} {{resultados[2]}} {{resultados[3]}} {{resultados[4]}}  {{resultados[5]}} 5</label>
+    {%endif%}
+    </div>
+
+    <br>  <br>
+    <p class="enunciado"> EVALUACIONES RECIBIDAS DEL VUELO </p>
+    <p class="enunciado">#Eval SEGURIDAD AMABILIDAD2  COMODIDAD2 BANOS PUNTABORDAR PUNTUALIDAD DESPEGUE ATENCION </p>
+    <br>
+    <div class="box">
+      {% if datosevaluacion%}   
+    <label id="letra" > {{datosevaluacion[0]}} {{datosevaluacion[1]}} {{datosevaluacion[2]}} {{datosevaluacion[3]}} {{datosevaluacion[4]}} {{datosevaluacion[5]}} {{datosevaluacion[6]}} {{datosevaluacion[7]}} {{datosevaluacion[8]}}  {{datosevaluacion[9]}} {{datosevaluacion[10]}} </label>
+    <br>
+    <label id="letra" > {{datosevaluacion[11]}} </label>
+    {%endif%}
+    </div>
+  </div>
+</form>
+  
+<form action= "/gestioncomentarios/gcomentarios" method="post" id="formR">
+  <hr>
+  <label for="buscar">¿Desea exportar los comentarios del vuelo a Excel? :<button type="submit" id="boton" class="botonR" name="siexportar">Si Exportar</button> </label>
+  <br><br>
+
+
+</form>
+{% endblock %}
+  

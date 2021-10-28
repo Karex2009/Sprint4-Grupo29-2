@@ -1,0 +1,51 @@
+form{
+    border: 1px solid black;
+    padding:20px;
+    text-align: left;
+    width: 650px;
+    margin: auto;
+}
+button{
+    background-color: rgba(0, 0, 255, 0.685);
+    color: white;
+    width: auto;
+    height: auto;
+    font-size: 20px;
+}
+.sele{
+    border: 1px solid black;
+    padding:10px;
+    width: auto;
+    margin: auto;
+}
+.tablas{
+    border: 1px solid black;
+    padding:10px;
+    width: 600px;
+    margin: auto;
+    text-align: center;
+    border-collapse: separate;
+}
+.enunciado{
+    text-align: center;
+    height: auto;
+    width: 60%;
+    margin-left: 50px;
+    padding: 10px;
+    border: 1px solid black;
+    align-content: center;
+    border-radius: 20px;
+}
+.label{
+    font-size: 25px;
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
+td{
+    width: 25%;
+    vertical-align: top;
+    border: 1px solid #000;
+    border-collapse: collapse;
+}

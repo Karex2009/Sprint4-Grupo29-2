@@ -2,73 +2,104 @@
 <link rel="stylesheet" type="text/css" href="/static/CSS/estiloPax.css">
 {% extends "layout.html" %}
 {% block contenido %}
-  <form action='/editarvuelo' method="post" id="formR">
-    <h2> Editar Vuelo </h2>
-    <hr>
-    <label for="buscar">Búsquedad  por código de vuelo</label>
-    <br><br>
-    <input type="text" id="buscar" name="buscar" wigth="100px">
-    <br><br>
-    <button type="submit" class="botonR" id="boton" name="buscar">Buscar</button>
-    <br><br>
-    <hr>
-    <div class="sele">
-    <p class="enunciado">  CÓDIGO  FECHA  HORA  DESTINO AVION  PILOTO ESTADO PUERTA</p>
+<form action='/editarvuelo' method="post" id="formR">
+  <h2> Editar Vuelo </h2>
+  <hr>
+  <label for="buscar">Búsquedad por código de vuelo</label>
+  <br><br>
+  <input type="text" id="buscar" name="buscar" wigth="100px">
+  <br><br>
+  <button type="submit" class="botonR" id="boton" name="buscar">Buscar</button>
+  <br><br>
+  <hr>
+  <div class="sele">
+    <p class="enunciado"> CÓDIGO FECHA HORA DESTINO AVION PILOTO ESTADO PUERTA</p>
     <br>
     <div class="box">
-    <!-- <input type="checkbox" id="check" name="check"> 
+      <!-- <input type="checkbox" id="check" name="check"> 
     <label id="letra" for="check">AV9509 18:40 BOGOTÁ RETRASADO 5</label> -->
 
-      {% if resultados%}   
-    <label id="letra" > {{resultados[0]}} {{resultados[1]}} {{resultados[2]}} {{resultados[3]}} {{resultados[4]}} {{resultados[5]}} puntual 5</label>
+      {% if resultados%}
+      <label id="letra"> {{resultados[0]}} {{resultados[1]}} {{resultados[2]}} {{resultados[3]}} {{resultados[4]}}
+        {{resultados[5]}} puntual 5</label>
       {%endif%}
-    
-    </div>
-    <br>
-    </div>
-    <br>
-  </form>
 
-  <form action= "/editarvuelo/editar" method="post" id="formR">
+    </div>
     <br>
-    <h5>Proceda ahora a EDITAR el vuelo:</h5>
-    <h6> NOTA: TODOS los campos HABILITADOS deben ser diligenciados</h6>
-    <br>
-    <div class="sele">
-    {% if resultados%}  
+  </div>
+  <br>
+</form>
+
+<form action="/editarvuelo/editar" method="post" id="formR">
+  <br>
+  <h5>Proceda ahora a EDITAR el vuelo:</h5>
+  <h6> NOTA: TODOS los campos HABILITADOS deben ser diligenciados</h6>
+  <br>
+  <section class="content">
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+  </section>
+  {% if resultados%}  
+  <div class="sele">
     <label for="codigo">Código del Vuelo:
-      <div class="box">{{resultados[0]}}</div></label>
-    {%endif%} 
-    </div>
-    <br>
-  
-    <label for="fecha">Fecha</label>
-    <br>
-    <input type="text" id="fecha" name="fecha">
-    <br>
+      <div class="box">{{resultados[0]}}</div>
+    </label>
+  </div>
+  <br>
 
-    <label for="hora">Hora</label>
-    <br>
-    <input type="text" id="hora" name="hora">
-    <br>
+  <label for="fecha">Fecha</label>
+  <br>
+  <input type="date" id="fecha" value="{{resultados[1]}}" name="fecha">
+  <br>
 
-    <label for="destino">Destino</label>
-    <br>
-    <input type="varchar" id="destino" name="destino">
-    <br>
-    <label for="puerta">Puerta</label>
-    <br>
-    <input type="text" id="puerta" name="puerta">
-    <br>
-    <label for="piloto">Piloto</label>
-    <br>
-    <input type="varchar" id="piloto" name="piloto">
-    <br>
-    <label for="avion">Avión</label>
-    <br>
-    <input type="varchar" id="avion" name="avion">
-    <br><br>
-    <button type="submit" class="botonR" id="submit" name="editar">Submit</button>
-    <br>
-  </form>
+  <label for="hora">Hora</label>
+  <br>
+  <input type="time" id="hora" value="{{resultados[2]}}" name="hora">
+  <br>
+
+  <label for="destino">Destino</label>
+  <br>
+  <select name="destino" style="width: 200px;">
+    {% for ci in listas[1] %}
+    {% for i in ci %}
+    <option>{% print(i) %}</option>
+    {% endfor %}
+    {% endfor %}
+  </select>
+  <br>
+  <label for="puerta">Puerta</label>
+  <br>
+  <select style="width: 200px;" name="puerta">
+    <option value="1">puerta 1</option>
+    <option value="2">puerta 2</option>
+    <option value="3">puerta 3</option>
+    <option value="4">puerta 4</option>
+  </select>
+  <br>
+  <label for="piloto">Piloto</label>
+  <br>
+  <select name="piloto" style="width: 200px;">
+    {% for pi in listas[0] %}
+    {% for i in pi %}
+    <option>{% print(i) %}</option>
+    {% endfor %}
+    {% endfor %}
+  </select>
+  <br>
+  <label for="avion">Avión</label>
+  <br>
+  <select name="avion" style="width: 200px;">
+    {% for av in listas[2] %}
+    {% for i in av %}
+    <option>{% print(i) %}</option>
+    {% endfor %}
+    {% endfor %}
+  </select>
+  <br><br>
+
+  {%endif%}
+  <button type="submit" class="botonR" id="submit" name="editar">Actualizar</button>
+  <br>
+</form>
 {% endblock %}

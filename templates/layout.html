@@ -55,9 +55,7 @@
                     {% else %}
                     
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            {% if g.user[5]==1 %}
-                            
-
+                            {% if g.user[5]==1 %} 
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="/reservar">Reservar Vuelo</a>
                                 </li>
@@ -73,15 +71,42 @@
                                 </li>
 
                             {% endif %}
+
+                            {% if g.user[5]==2 %}
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="/vistapiloto">Mis Vuelos</a>
+                                </li>
+                            {% endif %}
                         </ul>
 
-                        <ul class="navbar-nav mb-2 mb-lg-0">
+
+                        <div class="float-sm-start" >
+                      
+                            <span class="fs-6 fw-bold  align-middle text-capitalize" style="color: aliceblue;">{{g.user[0]}}  {{g.user[1]}}</span>                           
+                            <br>
+                            {% if g.user[5]==1 %}
+                            <span class="navbar-text" style="font-size: x-small;">
+                                Pasajero
+                              </span>
+                            {% endif %}
+                            {% if g.user[5]==3 %}
+                            <span class="navbar-text" style="font-size: x-small;">
+                                SuperAdministrador
+                              </span>
+                            {% endif %}
+                            {% if g.user[5]==2 %}
+                            <span class="navbar-text" style="font-size: x-small;">
+                                Piloto
+                              </span>
+                            {% endif %}
+                        </div>
+                        <ul class="navbar-nav mb-2 mb-lg-0" style="margin-right: 5%;">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="desplegableUser" href="#" id="navbarDropdown"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src="/static/images/user.png" width="49%">
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start dropdown-menu-dark"
                                     aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
     
@@ -91,10 +116,6 @@
 
                        
                     {% endif %}
-                    <form class="d-flex ">
-                        <input class="form-control me-2" type="search" placeholder="Buscar vuelos" aria-label="Search">
-                        <button class="btn btn-outline-primary" type="submit">Buscar</button>
-                    </form>
 
                 </div>
             </div>
