@@ -1,10 +1,10 @@
 <title>AeropuertoLosGarzones - EvaluacionVuelo</title>
-
+<link rel="stylesheet" type="text/css" href="/static/CSS/estiloPax.css">
 {% extends "layout.html" %}
 {% block contenido %}
 
 
-    <div>
+    <div class="container-sm">
         <br />
         <h2> ¡BIENVENIDO AL AREA DE EVALUACIÓN DEL VUELO QUE ACABA DE DISFRUTAR!</h1>
             <p>¿Como estuvo su vuelo? Esperamos que haya sido una gran experiencia para usted y sus acompañantes.
@@ -140,6 +140,11 @@
 
                     <br />
                     <br />
+                    <section class="content">
+                        {% for message in get_flashed_messages() %}
+                        <div class="flash">{{ message }}</div>
+                        {% endfor %}
+                      </section>
             </form>
     </div>
 {% endblock %}

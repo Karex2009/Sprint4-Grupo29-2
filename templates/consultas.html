@@ -23,17 +23,10 @@
     </tr>
   </thead>
   <tbody>
+    {% for a in datos %}
     <tr>
-      <th >1</th>
-      <td>Boeing 737</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-    </tr>
-    {% for i in range(cantidad[0]|int) %}
-    <tr>
-      {% for a in datos %}
-        <td> {% print(a[i][0]) %}</td>
+      {% for j in a %}
+        <td> {% print(j) %}</td>
       {% endfor %}
       <td> A tiempo</td>
     </tr>

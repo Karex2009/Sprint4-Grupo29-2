@@ -66,6 +66,11 @@
         no puedo cambiar la fecha del mismo.
     </p><br><br>
     <button class="buttonCrear" type="submit" value="Enviar">CREAR VUELO</button>
+    <section class="content">
+        {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+    </section>
 
 </form>
 

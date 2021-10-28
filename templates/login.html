@@ -2,6 +2,12 @@
 
 {% extends "layout.html" %}
 {% block contenido %}
+<div>
+    <p>Usuario Administrador Credenciales: USER: admin@admin.com // Password: admin
+    </p>
+    <p>Usuario Pasajero Credenciales: USER: julian@gmail.com // Password: 123
+    </p>
+</div>
 <div class="container">
     <h3>Ingresar
         <hr>
@@ -22,6 +28,11 @@
         </div>
         <button type="submit" class="btn btn-primary" id="btnIngreso">Ingresar</button>
         <form>
+            <section class="content">
+                {% for message in get_flashed_messages() %}
+                <div class="flash">{{ message }}</div>
+                {% endfor %}
+              </section>
             <div class="mb-3" id="reestablecer">
                 <br>
                 <a type="button" class=" link-warning" data-bs-toggle="modal" data-bs-target="#exampleModal"

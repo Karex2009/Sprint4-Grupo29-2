@@ -1,0 +1,61 @@
+<link rel="stylesheet" type="text/css" href="/static/css/estiloPiloto.css">
+{% extends "layout.html" %}
+{% block contenido %}
+
+<form>
+  <h2> Pantalla Principal Pilotos </h2>
+  <hr>
+  <hr>
+  <div class="sele">
+    <label class="label">Información Personal</label>
+    <br><br>
+    <table class="tablas">
+      <tr>
+        <th>NOMBRE</th>
+        <th>APELLIDO</th>
+        <th>IDENTIFICACIÓN</th>
+      <tr>
+        {% if piloto %}
+        <td>{{ piloto[0] }}</td>
+        <td>{{ piloto[1] }}</td>
+        <td>{{ piloto[2] }}</td>
+        {%endif%}
+      </tr>
+    </table>
+    <br>
+    <hr>
+    <div>
+      <label class="label">Información del vuelo</label>
+      <br><br>
+      <table class="tablas">
+        <tr>
+
+          <th>Vuelos Asignados</th>
+          <th>Origen</th>
+          <th>Destino</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Avión Asignado</th>
+
+        </tr>
+        {% for i in vuelos %}
+        <tr>
+          {% for a in i %}
+   
+          <td>{%print(a)%}</td>
+         
+          {% endfor %}
+          
+        </tr>
+        {% endfor %}
+
+      </table>
+    </div>
+    <br>
+    <br>
+    <button type="submit" id="boton" name="Actualizar">Actualizar</button>
+    <button type="submit" id="boton" name="Atras">Atras</button>
+  </div>
+</form>
+
+{% endblock %}

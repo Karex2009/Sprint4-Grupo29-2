@@ -9,9 +9,67 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
 
-@app.route('/')
+@app.route('/', methods=('GET', 'POST'))
 def index():
-    return render_template('index.html')
+    try:
+        if request.method == 'POST':
+            print("entre por post")
+            db = get_db()
+            busqueda = request.form['busqueda']
+
+            result = db.execute(
+                'SELECT codigo,avion,piloto,destino FROM vuelos where codigo =' + "'"+busqueda + "'"
+            ).fetchall()
+            print(result)
+
+            close_db()
+
+            return render_template('consultas.html', datos=result)
+        else:
+            print("entre por get")
+            db = get_db()
+            todos = []
+            lista2 = []
+            lista3 = []
+
+            codigo = db.execute(
+                'select codigo from vuelos'
+            ).fetchall()
+            todos.append(codigo)
+
+            avion = db.execute(
+                'SELECT avion FROM vuelos'
+            ).fetchall()
+            todos.append(avion)
+
+            pilotos = db.execute(
+                'SELECT piloto FROM vuelos'
+            ).fetchall()
+            todos.append(pilotos)
+
+            destino = db.execute(
+                'SELECT destino FROM vuelos'
+            ).fetchall()
+            todos.append(destino)
+
+            close_db()
+
+            for x in todos:
+                lista = []
+                for j in x:
+                    lista.append(j[0])
+                lista2.append(lista)
+
+            for a in range(len(lista2)):
+                lista = []
+                for i in range(4):
+                    print(lista2[i][a])
+                    lista.append(lista2[i][a])
+                lista3.append(lista)
+
+            return render_template('consultas.html', datos=lista3)
+    except:
+        return render_template('consultas.html')
 
 
 @app.route('/login', methods=('GET', 'POST'))
@@ -31,24 +89,23 @@ def login():
                 error = 'Contraseña requerida'
                 flash(error)
                 return render_template('login.html')
-            print("validando el ingreso")
+
             user = db.execute(
                 'SELECT * FROM personas WHERE correo = ? ', (username,)
             ).fetchone()
-            
+
             contrasena_almacenada = user[4]
             resultado = check_password_hash(contrasena_almacenada, password)
-            
 
             if (user is not None) and (resultado is True):
                 error = 'Consulta realizada : Usuario valido'
                 session.clear()
-                session["user_id"]=user[3]
-                session["rol"]=user[5]                
-                return redirect(url_for( 'consultas' ))
+                session["user_id"] = user[3]
+                session["rol"] = user[5]
+                return redirect(url_for('consultas'))
             else:
-                error = 'Consulta realizada : Usuario o contraseña inválidos'
-            print(error)
+                error = 'Usuario o contraseña inválidos'
+            flash(error)
         return render_template('login.html')
     except:
         return render_template('login.html')
@@ -57,21 +114,22 @@ def login():
 @app.before_request
 def load_logged_in_user():
     print("Entre al before request :)")
-    user_id=session.get('user_id')
-    user_rol=session.get('rol')
-    print(user_id)
-    
+    user_id = session.get('user_id')
+
     if(user_id is None):
-        g.user=None
-        
+        g.user = None
+
     else:
         g.user = get_db().execute(
             'SELECT * FROM personas WHERE correo = ?', (user_id,)
         ).fetchone()
 
-def login_required(view): # usuario requerido , es como si estuviese llamando directamente a la funcion interna
+
+# usuario requerido , es como si estuviese llamando directamente a la funcion interna
+def login_required(view):
     @functools.wraps(view)
-    def wrapped_view(**kwargs): # toma una funcion utilizada en un decorador y añadir la funcion de copia el nombre de la funcion
+    # toma una funcion utilizada en un decorador y añadir la funcion de copia el nombre de la funcion
+    def wrapped_view(**kwargs):
         if g.user is None:
             return redirect(url_for('login'))
         return view(**kwargs)
@@ -94,7 +152,6 @@ def signup():
             if error is not None:
                 return render_template("registro.html")
             else:
-                print("Entre a esta metodo")
 
                 db.execute(
                      'INSERT INTO personas (nombre, apellido, identificacion, correo, contrasena,tipo_usuario) VALUES (?,?,?,?,?,?)',
@@ -103,51 +160,42 @@ def signup():
                 )
                 db.commit()
 
-                print('ingresado a la base de datos')
-                return redirect(url_for( 'login' ))
+                return redirect(url_for('login'))
         return render_template('registro.html')
     except:
        return render_template('registro.html')
 
 
-@app.route( '/logout' )
+@app.route('/logout')
 @login_required
 def logout():
     session.clear()
-    return redirect(url_for( 'login' ))
+    return redirect(url_for('login'))
+
 
 @app.route('/consultas', methods=('GET', 'POST'))
-# @login_required
 def consultas():
     try:
         if request.method == 'POST':
             print("entre por post")
             db = get_db()
-            # BUSCAR LA INFORMACION EN BASE DE DATOS CON ESA CARAR
             busqueda = request.form['busqueda']
-            
-            cantidad = db.execute(
-                'SELECT COUNT(*) FROM vuelos where codigo =' + "'"+busqueda + "'" 
-            ).fetchone()
-            print(cantidad)
 
             result = db.execute(
-                'SELECT * FROM vuelos where codigo ='+ "'"+busqueda + "'"
+                'SELECT codigo,avion,piloto,destino FROM vuelos where codigo =' + "'"+busqueda + "'"
             ).fetchall()
             print(result)
-
-            return render_template('consultas.html', datos=result, cantidad=cantidad)
+            close_db()
+            return render_template('consultas.html', datos=result)
         else:
             print("entre por get")
             db = get_db()
             todos = []
-
-            cantidad = db.execute(
-                'SELECT COUNT(*) FROM vuelos'
-            ).fetchone()
+            lista2 = []
+            lista3 = []
 
             codigo = db.execute(
-                'select codigo from vuelos'
+                'SELECT codigo FROM vuelos'
             ).fetchall()
             todos.append(codigo)
 
@@ -165,11 +213,23 @@ def consultas():
                 'SELECT destino FROM vuelos'
             ).fetchall()
             todos.append(destino)
-            print(todos)
 
-            return render_template('consultas.html', datos=todos, cantidad=cantidad)
+            for x in todos:
+                lista = []
+                for j in x:
+                    lista.append(j[0])
+                lista2.append(lista)
+
+            for a in range(len(lista2)):
+                lista = []
+                for i in range(4):
+                    print(lista2[i][a])
+                    lista.append(lista2[i][a])
+                lista3.append(lista)
+            
+            return render_template('consultas.html', datos=lista3)
     except:
-       return render_template('consultas.html')
+        return render_template('consultas.html')
 
 
 @app.route('/dashboard')
@@ -275,7 +335,9 @@ def crearvuelo():
                     (codigo, piloto, destino, avion, puerta, fecha, hora)
                 )
                 db.commit()
+                flash("Vuelo creado")
                 return render_template('crearvuelo.html', listas=datos)
+                
             else:
                 return render_template('crearvuelo.html', listas=datos)
         except:
@@ -298,19 +360,18 @@ def eliminarvuelo():
 
                 if not buscar :
                     error='Debes ingresar un codigo de vuelo'
-                    print ( error )
+                    flash ( error )
                     return render_template("eliminarvuelo.html")
 
                 # else:
-                #print("Entre a metodo eliminar")
+                # print("Entre a metodo eliminar")
                 resultadoE=db.execute(
                     'SELECT* FROM vuelos WHERE codigo=?',(buscar,)
-                ).fetchone()
-                print (resultadoE)
+                ).fetchone()                
 
                 if resultadoE is None :
                     error='ESE CODIGO DE VUELO NO EXISTE'
-                    print (error)
+                    flash (error)
                     return render_template("eliminarvuelo.html")
                 else:
                     print ('SI SE ENCONTRO EL CODIGO DE VUELO')
@@ -335,7 +396,7 @@ def eliminarvuelos():
                 )
                 db.commit()
 
-                print('eliminado de la base de datos')
+                flash('eliminado de la base de datos')
                 return render_template("eliminarvuelo.html")
             return render_template('eliminarvuelo.html')    
         except:
@@ -348,15 +409,28 @@ def eliminarvuelos():
 def editarvuelo():
     global resultadoA
     if g.user[5]==3:
+        datos = []
         try:
             if request.method=='POST':
                 db=get_db()
+                pilotos = db.execute(
+                    'SELECT nombre FROM personas WHERE tipo_usuario = 2'
+                ).fetchall()
+                datos.append(pilotos)
+                ciudades = db.execute(
+                    'select * from ciudades'
+                ).fetchall()
+                datos.append(ciudades)
+                aviones = db.execute(
+                    'select matricula from aviones'
+                ).fetchall()
+                datos.append(aviones)
                 buscar=request.form['buscar']
                 error=None
 
                 if not buscar :
                     error='Debes ingresar un codigo de vuelo'
-                    print ( error )
+                    flash ( error )
                     return render_template("editarvuelo.html")
 
                 else:
@@ -364,16 +438,15 @@ def editarvuelo():
                 resultadoA=db.execute(
                     'SELECT* FROM vuelos WHERE codigo=?',(buscar,)
                 ).fetchone()
-                print (resultadoA)
+                
 
                 if resultadoA is None :
                     error='ESE CODIGO DE VUELO NO EXISTE'
-                    print (error)
+                    flash (error)
                     return render_template("editarvuelo.html")
                 else:
-                    print ('SI SE ENCONTRO EL CODIGO DE VUELO')
-                    return render_template("editarvuelo.html",resultados=resultadoA)         
                     
+                    return render_template("editarvuelo.html",resultados=resultadoA, listas=datos)      
             return render_template("editarvuelo.html")
         except:
             return render_template('editarvuelo.html')        
@@ -393,18 +466,15 @@ def editarvuelos():
                 avion=request.form['avion']
                 piloto=request.form['piloto']
                 puerta=request.form['puerta']   
-
-                print('se ingreso al metodo de actualizacion')
-                print(resultadoA[0])
-
+                
                 db=get_db()
                 error=None               
                 db.execute(
-                    'UPDATE vuelos SET fecha=?, hora=?, destino=?,avion=?, piloto=?, puerta=? WHERE codigo= ?', (fecha,hora,destino,avion, piloto,puerta,resultadoA[0])
+                    'UPDATE vuelos SET fecha=?, hora=?, destino=?,avion=?, piloto=?, puerta=? WHERE codigo= ?', (fecha,hora,destino,avion,piloto,puerta,resultadoA[0])
                 )
                 db.commit()
 
-                print('Editado en la base de datos')
+                flash('Editado en la base de datos')
                 return render_template("editarvuelo.html")
             return render_template('editarvuelo.html')    
         except:
@@ -432,11 +502,11 @@ def evaluar():
                 refrigerio=request.form['refrigerio']
                 duracion=request.form['duracion']
                 comentario=request.form['comentario']
-                error = None
-                print('se ingreso al metodo de evaluacion')
+                error = None                
                 db = get_db()
                 if error is not None:
                     return render_template("evaluar.html")
+                    
                 else:
                     print ('ENTRE AL METODO INSERTAR')
                     db.execute(
@@ -444,6 +514,7 @@ def evaluar():
                         (seguridad, amabilidad2,comodidad2,banos, puntualidadAbordar, puntualidadDespegue,atencion,amabilidad1,refrigerio,duracion, comentario)
                     )
                     db.commit()
+                    flash("Evaluación guardada con éxito")
                     return render_template('consultas.html')
             return render_template('evaluar.html')
             
@@ -517,3 +588,91 @@ def update_rol():
 
     else:
             return render_template('consultas.html')
+
+
+@app.route('/gestioncomentarios', methods=('GET','POST'))
+@login_required
+def gestioncomentarios():
+    if g.user[5]==3:   
+        try:
+            if request.method=='POST':
+                db=get_db()
+                buscar=request.form['buscar']
+                error=None
+
+                if not buscar :
+                    error='Debes ingresar un codigo de vuelo'
+                    print ( error )
+                    return render_template("gestioncomentarios.html")
+
+                else:
+                    print("Entre a metodo visualizar datos del vuelo - tabla vuelos")
+                    resultadoB=db.execute(
+                    'SELECT* FROM vuelos WHERE codigo=?',(buscar,)
+                    ).fetchone()
+                    print (resultadoB)
+
+                if resultadoB is None :
+                    error='ESE CODIGO DE VUELO NO EXISTE'
+                    print (error)
+                    return render_template("gestioncomentarios.html")
+                else:
+                    print ('SI SE ENCONTRO EL CODIGO DE VUELO')
+                    resultadoD=db.execute(
+                        'SELECT* FROM evaluacion WHERE vuelo=?',(buscar,)
+                    ).fetchone()
+                    print ('entre a tabla evaluar')
+                    return render_template("gestioncomentarios.html",resultados=resultadoB,datosevaluacion=resultadoD )
+                            
+                    
+            return render_template("gestioncomentarios.html")
+        except:
+            return render_template('gestioncomentarios.html')
+    else:
+            return render_template('consultas.html')
+
+
+@app.route('/gestioncomentarios/gcomentarios', methods=('GET','POST'))
+@login_required
+def gestioncomentariosexportar():
+    if g.user[5]==3:      
+        try:
+            if request.method=='GET':
+                
+                print("Entre a metodo exportar datos consulta tabla 'vuelos'")
+
+                archivo=open("Evaluacion.txt","a")
+                archivo.write('resultados\n')#no esta guardando datos 
+                archivo.close()
+
+                return render_template('gestioncomentarios.html')
+            else:
+                return render_template('gestioncomentarios.html')
+
+        except:
+            return render_template('gestioncomentarios.html')
+    else:
+        return render_template('consultas.html')
+
+
+@app.route('/vistapiloto')
+@login_required
+def vistaPiloto():
+    if g.user[5]==2:
+        db = get_db()
+        todos = []
+        
+        vuelosAsig = db.execute(
+            'SELECT codigo,destino,fecha,hora,avion FROM vuelos WHERE piloto = ?',(g.user[0],)
+        ).fetchall()
+
+        print(vuelosAsig)
+        usuario = db.execute(
+            'SELECT * FROM personas WHERE correo = ?',(g.user[3],)
+        ).fetchone()
+        
+
+        return render_template('vistapiloto.html', piloto=usuario, vuelos=vuelosAsig)
+    else:
+        return render_template('consultas.html')
+

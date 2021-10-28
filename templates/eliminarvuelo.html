@@ -27,6 +27,11 @@
   </form>
   
   <form action= "/eliminarvuelo/eliminar" method="post" id="formR">
+    <section class="content">
+      {% for message in get_flashed_messages() %}
+      <div class="flash">{{ message }}</div>
+      {% endfor %}
+    </section>
     <br>
     <button type="submit" id="boton" class="botonR" name="eliminar">Eliminar</button>
   </form>
